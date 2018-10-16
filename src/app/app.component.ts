@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { RedditService }  from './services/reddit.service';
 import { TabsPage } from '../pages/tabs/tabs';
+import { SharedService }  from './services/share.service';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [RedditService, SharedService]
 })
-export class MyApp {
+export class MyReddit {
   rootPage:any = TabsPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {

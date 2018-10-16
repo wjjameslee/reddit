@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Settings
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div text-center>
+    <button ion-button (click)="addCategory()" color="dark" icon-start text-center>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Add&nbsp;&nbsp;&nbsp;
+      <ion-icon name="add-circle"></ion-icon>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </button>
+    <button ion-button (click)="removeCategory()" color="danger" icon-end text-center>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <ion-icon name="remove-circle"></ion-icon>
+      &nbsp;&nbsp;&nbsp;
+      Remove
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </button>
+  </div>
+	<form (submit)="setDefaults()">
+		<ion-list>
+			<ion-item>
+				<ion-label fixed>Category</ion-label>
+				<ion-select [(ngModel)]="category" name="category">
+					<ion-option *ngFor="let option of options; let i = index" value="{{option.toLowerCase()}}">{{option}}</ion-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label fixed>Limit</ion-label>
+				<ion-select [(ngModel)]="limit" name="limit">
+					<ion-option value="5">5</ion-option>
+					<ion-option value="10">10</ion-option>
+					<ion-option value="15">15</ion-option>
+					<ion-option value="20">20</ion-option>
+					<ion-option value="25">25</ion-option>
+				</ion-select>
+			</ion-item>
+      <ion-item>
+				<ion-label fixed>Sort</ion-label>
+				<ion-select [(ngModel)]="sort" name="sort">
+					<ion-option value="hot">Hot</ion-option>
+					<ion-option value="new">New</ion-option>
+					<ion-option value="controversial">Controversial</ion-option>
+				</ion-select>
+			</ion-item>
+      <ion-item>
+        <p style="color:red"><b>*</b> Must save changes for limit and sort filters</p>
+      </ion-item>
+      <br />
+      <br />
+			<button ion-button type="submit" block>Save Changes</button>
+		</ion-list>
+	</form>
+</ion-content>
